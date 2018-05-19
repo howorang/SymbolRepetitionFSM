@@ -10,6 +10,7 @@ public class StateMachine {
 
     private Map<String, State> stateMap = new HashMap<>();
     private List<ProcessingContext> processingContexts = new ArrayList<>();
+    private List<ProcessingContext> contextsToChronicle = new ArrayList<>();
 
     public StateMachine() {
         List<State> states = new ArrayList<>();
@@ -95,6 +96,8 @@ public class StateMachine {
                 for (String state : transitionsForSymbol) {
                     processingContexts.add(context.child(stateMap.get(state)));
                 }
+            } else {
+                contextsToChronicle.add(context);
             }
         }
     }
@@ -116,6 +119,11 @@ public class StateMachine {
 
     public String getHistory() {
         StringBuilder history = new StringBuilder();
+        for (ProcessingContext context : contextsToChronicle) {
+            history.append(context.getHistory());
+            history.append(" X");
+            history.append("\n");
+        }
         for (ProcessingContext context : processingContexts) {
             history.append(context.getHistory());
             history.append("\n");
