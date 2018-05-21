@@ -5,7 +5,7 @@ public class ProcessingContext {
     private State currentState;
 
     public ProcessingContext child (State newState) {
-        return new ProcessingContext(this.history + " " + newState.name, newState);
+        return new ProcessingContext(this.history + " -> " + newState.name, newState);
     }
 
     public ProcessingContext(String history, State currentState) {

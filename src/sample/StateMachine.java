@@ -121,7 +121,7 @@ public class StateMachine {
         StringBuilder history = new StringBuilder();
         for (ProcessingContext context : contextsToChronicle) {
             history.append(context.getHistory());
-            history.append(" X");
+            history.append(" -> X");
             history.append("\n");
         }
         for (ProcessingContext context : processingContexts) {

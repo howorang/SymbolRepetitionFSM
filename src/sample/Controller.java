@@ -46,7 +46,7 @@ public class Controller {
             stateMachine.proccess(String.valueOf(character));
         }
         textView.appendText(stateMachine.getHistory() + "\n");
-        textView.appendText(stateMachine.getResult().name() + "\n");
+        textView.appendText(stateMachine.getResult().friendlyName + "\n");
     }
 
 }
